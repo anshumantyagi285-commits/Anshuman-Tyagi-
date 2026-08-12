@@ -98,6 +98,27 @@
       }
     }
 
+    /* Page Container */
+    .page-container {
+      display: none;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    .page-container.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     /* Main Container Card */
     .card {
       background: var(--card-bg);
@@ -166,6 +187,23 @@
       }
     }
 
+    /* PAGE 1: Love Question */
+    .love-question {
+      font-family: 'Alex Brush', cursive;
+      font-size: 2.8rem;
+      color: var(--deep-rose);
+      margin-bottom: 30px;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    .love-subtext {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      font-weight: 300;
+      animation: fadeIn 1s ease-out 0.3s backwards;
+    }
+
     /* Message Box */
     .message-box {
       background: linear-gradient(135deg, #FFFDF9 0%, #FFF9F5 100%);
@@ -178,26 +216,12 @@
       animation: fadeIn 1s ease-out 0.3s backwards;
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
     .message {
       font-size: 1rem;
       line-height: 1.8;
       color: var(--text-main);
       font-weight: 300;
       font-style: italic;
-    }
-
-    .message-highlight {
-      color: var(--accent-rose);
-      font-weight: 500;
     }
 
     /* Promise Section */
@@ -238,8 +262,8 @@
     }
 
     .closing-subtext {
-      font-size: 0.9rem;
-      color: var(--text-muted);
+      font-size: 1rem;
+      color: var(--text-main);
       margin-bottom: 24px;
       font-weight: 300;
       animation: fadeIn 1s ease-out 0.9s backwards;
@@ -252,15 +276,52 @@
       gap: 16px;
       align-items: center;
       animation: fadeIn 1s ease-out 1s backwards;
+      flex-wrap: wrap;
     }
 
+    .nav-button {
+      background: linear-gradient(135deg, var(--accent-rose), var(--deep-rose));
+      border: none;
+      border-radius: 50px;
+      padding: 12px 32px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 16px rgba(217, 136, 128, 0.3);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .nav-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 24px rgba(217, 136, 128, 0.4);
+    }
+
+    .nav-button:active {
+      transform: scale(0.95);
+    }
+
+    .nav-button.secondary {
+      background: none;
+      border: 2px solid var(--accent-rose);
+      color: var(--accent-rose);
+      box-shadow: none;
+    }
+
+    .nav-button.secondary:hover {
+      background: rgba(247, 214, 208, 0.2);
+    }
+
+    /* Heart Button */
     .heart-btn {
       background: linear-gradient(135deg, var(--accent-rose), var(--deep-rose));
       border: none;
       border-radius: 50%;
-      width: 56px;
-      height: 56px;
-      font-size: 1.8rem;
+      width: 64px;
+      height: 64px;
+      font-size: 2rem;
       cursor: pointer;
       transition: all 0.3s ease;
       display: flex;
@@ -276,29 +337,6 @@
     }
 
     .heart-btn:active {
-      transform: scale(0.95);
-    }
-
-    .flower-btn {
-      background: none;
-      border: 2px solid var(--soft-pink);
-      border-radius: 50%;
-      width: 56px;
-      height: 56px;
-      font-size: 1.6rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .flower-btn:hover {
-      background: rgba(247, 214, 208, 0.2);
-      transform: scale(1.1);
-    }
-
-    .flower-btn:active {
       transform: scale(0.95);
     }
 
@@ -326,6 +364,10 @@
         font-size: 2.8rem;
       }
 
+      .love-question {
+        font-size: 2.2rem;
+      }
+
       .closing {
         font-size: 1.8rem;
       }
@@ -336,6 +378,11 @@
 
       .promise {
         font-size: 0.95rem;
+      }
+
+      .nav-button {
+        padding: 10px 24px;
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -353,54 +400,82 @@
     <div class="heart-particle" style="left: 15%; animation-delay: 5s;">♥</div>
   </div>
 
-  <main class="card">
-    <!-- Headline -->
-    <h1 class="headline">I'm Sorry ❤️</h1>
-    <div class="divider"></div>
+  <!-- PAGE 1: Love Question -->
+  <div class="page-container active" id="page1">
+    <main class="card">
+      <h1 class="love-question">Do you love me? 💕</h1>
+      <div class="divider"></div>
+      <p class="love-subtext">Just... yes? 🥺</p>
+      
+      <div class="button-group">
+        <button class="heart-btn" onclick="goToPage(2)" title="Yes!" aria-label="Yes">❤️</button>
+      </div>
+    </main>
+  </div>
 
-    <!-- Heartfelt Apology Message -->
-    <div class="message-box">
-      <p class="message">
-        "I know somehow I hurt you again and again or make you feel sad, and now I don't know why but I started expecting things. When they don't happen, I get upset. I didn't realize it before, but my behavior changed a few days ago, which is why I started having these expectations."
-      </p>
-    </div>
+  <!-- PAGE 2: Apology Letter -->
+  <div class="page-container" id="page2">
+    <main class="card">
+      <h1 class="headline">I'm Sorry ❤️</h1>
+      <div class="divider"></div>
 
-    <!-- Promise Section -->
-    <div class="promise-container">
-      <p class="section-title">✨ My Promise to You ✨</p>
-      <p class="promise">
-        I am <span class="promise-highlight">stepping back and letting go</span> of those unreasonable expectations. I want to focus purely on <span class="promise-highlight">understanding you</span>, being patient, and <span class="promise-highlight">loving you</span> without letting silly moods get in the way.
-      </p>
-    </div>
+      <!-- Apology Message -->
+      <div class="message-box">
+        <p class="message">
+          "I know somehow I hurt you again and again or make you feel sad, and now I don't know why but I started expecting things. When they don't happen, I get upset. I didn't realize it before, but my behavior changed a few days ago, which is why I started having these expectations."
+        </p>
+      </div>
 
-    <!-- Closing -->
-    <p class="closing">Will you forgive me?</p>
-    <p class="closing-subtext">You mean everything to me 💕</p>
+      <p class="closing-subtext" style="margin-bottom: 32px; font-weight: 400;">Bauni hai tu ✨</p>
 
-    <!-- Interactive Buttons -->
-    <div class="button-group">
-      <button class="heart-btn" aria-label="Love" title="Click to show your love">❤️</button>
-      <button class="flower-btn" aria-label="Forgive" title="Will you forgive me?">🌸</button>
-    </div>
-  </main>
+      <div class="button-group">
+        <button class="nav-button" onclick="goToPage(3)">समझी Bauni 💕</button>
+      </div>
+    </main>
+  </div>
+
+  <!-- PAGE 3: Promise -->
+  <div class="page-container" id="page3">
+    <main class="card">
+      <h1 class="headline">My Promise 💝</h1>
+      <div class="divider"></div>
+
+      <!-- Promise Section -->
+      <div class="promise-container">
+        <p class="section-title">✨ To You ✨</p>
+        <p class="promise">
+          I am <span class="promise-highlight">stepping back and letting go</span> of those unreasonable expectations. I want to focus purely on <span class="promise-highlight">understanding you</span>, being patient, and <span class="promise-highlight">loving you</span> without letting silly moods get in the way.
+        </p>
+      </div>
+
+      <!-- Final Message -->
+      <p class="closing">I love you<br>Mera Baccha 🥺❤️</p>
+
+      <div class="button-group">
+        <button class="heart-btn" onclick="goToPage(1)" title="Start Over">💕</button>
+      </div>
+    </main>
+  </div>
 
   <script>
-    // Enhanced interaction
-    const heartBtn = document.querySelector('.heart-btn');
-    const flowerBtn = document.querySelector('.flower-btn');
-
-    heartBtn.addEventListener('click', function() {
-      this.style.animation = 'none';
-      setTimeout(() => {
-        this.style.animation = 'pulse 2s infinite';
-      }, 10);
+    function goToPage(pageNumber) {
+      // Hide all pages
+      document.querySelectorAll('.page-container').forEach(page => {
+        page.classList.remove('active');
+      });
       
-      // Create floating hearts on click
-      createFloatingHeart(event);
-    });
+      // Show the selected page
+      document.getElementById('page' + pageNumber).classList.add('active');
 
-    flowerBtn.addEventListener('click', function() {
-      alert('Thank you for your love! I promise to be better. 🌸💕');
+      // Scroll to top
+      window.scrollTo(0, 0);
+    }
+
+    // Create floating hearts on page 1 heart button click
+    document.addEventListener('click', function(event) {
+      if (event.target.classList.contains('heart-btn')) {
+        createFloatingHeart(event);
+      }
     });
 
     function createFloatingHeart(event) {
