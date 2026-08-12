@@ -134,6 +134,8 @@
       z-index: 1;
       backdrop-filter: blur(10px);
       animation: slideIn 0.8s ease-out;
+      max-height: 90vh;
+      overflow-y: auto;
     }
 
     @keyframes slideIn {
@@ -208,7 +210,7 @@
     .message-box {
       background: linear-gradient(135deg, #FFFDF9 0%, #FFF9F5 100%);
       border-left: 4px solid var(--accent-rose);
-      padding: 20px;
+      padding: 24px;
       border-radius: 12px;
       margin-bottom: 32px;
       text-align: left;
@@ -217,11 +219,10 @@
     }
 
     .message {
-      font-size: 1rem;
-      line-height: 1.8;
+      font-size: 0.95rem;
+      line-height: 1.9;
       color: var(--text-main);
       font-weight: 300;
-      font-style: italic;
     }
 
     /* Promise Section */
@@ -240,8 +241,8 @@
     }
 
     .promise {
-      font-size: 1rem;
-      line-height: 1.8;
+      font-size: 0.95rem;
+      line-height: 1.9;
       color: var(--text-main);
       margin-bottom: 0;
       font-weight: 300;
@@ -257,16 +258,25 @@
       font-family: 'Alex Brush', cursive;
       font-size: 2.2rem;
       color: var(--deep-rose);
-      margin-bottom: 16px;
+      margin-bottom: 8px;
       animation: fadeIn 1s ease-out 0.7s backwards;
+    }
+
+    .signature {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      font-weight: 300;
+      font-style: italic;
+      animation: fadeIn 1s ease-out 0.9s backwards;
     }
 
     .closing-subtext {
       font-size: 1rem;
       color: var(--text-main);
-      margin-bottom: 24px;
-      font-weight: 300;
-      animation: fadeIn 1s ease-out 0.9s backwards;
+      margin-bottom: 32px;
+      font-weight: 400;
+      animation: fadeIn 1s ease-out 0.5s backwards;
     }
 
     /* Interactive Elements */
@@ -373,11 +383,11 @@
       }
 
       .message {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
       }
 
       .promise {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
       }
 
       .nav-button {
@@ -422,11 +432,13 @@
       <!-- Apology Message -->
       <div class="message-box">
         <p class="message">
-          "I know somehow I hurt you again and again or make you feel sad, and now I don't know why but I started expecting things. When they don't happen, I get upset. I didn't realize it before, but my behavior changed a few days ago, which is why I started having these expectations."
+          I tend to build up unnecessary expectations for no reason, and that's why I ended up crying. I really need a lot of love right now. I'm joking—well, actually, I'm not joking; I genuinely need it. I need you a lot. But only on your terms. I know you aren't into fake displays of affection, and I completely understand that.
+          <br><br>
+          But please, don't stay so angry all the time. Just try to be a bit more relaxed, and don't take my words to heart. You know I'm just a silly, clueless guy—how could I ever say anything to hurt you? You are my sweet, adorable baby. I had some weird expectations earlier, and I am really sorry for that.
         </p>
       </div>
 
-      <p class="closing-subtext" style="margin-bottom: 32px; font-weight: 400;">Bauni hai tu ✨</p>
+      <p class="closing-subtext">Bauni hai tu ✨</p>
 
       <div class="button-group">
         <button class="nav-button" onclick="goToPage(3)">समझी Bauni 💕</button>
@@ -450,6 +462,7 @@
 
       <!-- Final Message -->
       <p class="closing">I love you<br>Mera Baccha 🥺❤️</p>
+      <p class="signature">— Your Buddhu Anshuman 💕</p>
 
       <div class="button-group">
         <button class="heart-btn" onclick="goToPage(1)" title="Start Over">💕</button>
