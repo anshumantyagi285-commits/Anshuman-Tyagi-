@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I'm Sorry ❤️</title>
+  
+  <!-- Google Fonts for Elegant Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS Variables for Romantic Palette */
+    :root {
+      --bg-cream: #FFFDF9;
+      --card-bg: #FFFFFF;
+      --soft-pink: #F7D6D0;
+      --accent-rose: #D98880;
+      --deep-rose: #A3485E;
+      --text-main: #4A3E3D;
+      --text-muted: #7D6B69;
+      --gold-accent: #D4A574;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--bg-cream) 0%, #FFF5F0 100%);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Animated Gradient Background */
+    .bg-gradient {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 50%, rgba(247, 214, 208, 0.3) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(217, 136, 128, 0.2) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Floating Hearts Background Effect */
+    .bg-hearts {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .heart-particle {
+      position: absolute;
+      color: var(--soft-pink);
+      opacity: 0.5;
+      font-size: 1.2rem;
+      animation: float 8s infinite ease-in-out;
+    }
+
+    .heart-particle:nth-child(odd) {
+      animation-duration: 9s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) translateX(0) scale(0.5) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-10vh) translateX(30px) scale(1.2) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Main Container Card */
+    .card {
+      background: var(--card-bg);
+      border: 2px solid rgba(247, 214, 208, 0.6);
+      border-radius: 28px;
+      padding: 48px 32px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(163, 72, 94, 0.1),
+                  0 0 40px rgba(217, 136, 128, 0.05);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      backdrop-filter: blur(10px);
+      animation: slideIn 0.8s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Typography Styles */
+    .headline {
+      font-family: 'Alex Brush', cursive;
+      font-size: 3.5rem;
+      color: var(--deep-rose);
+      margin-bottom: 12px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent-rose), transparent);
+      margin: 0 auto 28px auto;
+      border-radius: 2px;
+      animation: expandWidth 0.8s ease-out 0.2s backwards;
+    }
+
+    @keyframes expandWidth {
+      from {
+        width: 0;
+      }
+      to {
+        width: 60px;
+      }
+    }
+
+    /* Message Box */
+    .message-box {
+      background: linear-gradient(135deg, #FFFDF9 0%, #FFF9F5 100%);
+      border-left: 4px solid var(--accent-rose);
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 32px;
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(217, 136, 128, 0.08);
+      animation: fadeIn 1s ease-out 0.3s backwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .message {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-main);
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .message-highlight {
+      color: var(--accent-rose);
+      font-weight: 500;
+    }
+
+    /* Promise Section */
+    .promise-container {
+      animation: fadeIn 1s ease-out 0.5s backwards;
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-rose);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .promise {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-main);
+      margin-bottom: 0;
+      font-weight: 300;
+    }
+
+    .promise-highlight {
+      color: var(--deep-rose);
+      font-weight: 500;
+    }
+
+    /* Closing Line */
+    .closing {
+      font-family: 'Alex Brush', cursive;
+      font-size: 2.2rem;
+      color: var(--deep-rose);
+      margin-bottom: 16px;
+      animation: fadeIn 1s ease-out 0.7s backwards;
+    }
+
+    .closing-subtext {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      font-weight: 300;
+      animation: fadeIn 1s ease-out 0.9s backwards;
+    }
+
+    /* Interactive Elements */
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      align-items: center;
+      animation: fadeIn 1s ease-out 1s backwards;
+    }
+
+    .heart-btn {
+      background: linear-gradient(135deg, var(--accent-rose), var(--deep-rose));
+      border: none;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      font-size: 1.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 16px rgba(217, 136, 128, 0.3);
+      position: relative;
+    }
+
+    .heart-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 24px rgba(217, 136, 128, 0.4);
+    }
+
+    .heart-btn:active {
+      transform: scale(0.95);
+    }
+
+    .flower-btn {
+      background: none;
+      border: 2px solid var(--soft-pink);
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      font-size: 1.6rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .flower-btn:hover {
+      background: rgba(247, 214, 208, 0.2);
+      transform: scale(1.1);
+    }
+
+    .flower-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* Pulse Animation */
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 8px 16px rgba(217, 136, 128, 0.3);
+      }
+      50% {
+        box-shadow: 0 8px 24px rgba(217, 136, 128, 0.5);
+      }
+    }
+
+    .heart-btn {
+      animation: pulse 2s infinite;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .card {
+        padding: 36px 24px;
+      }
+
+      .headline {
+        font-size: 2.8rem;
+      }
+
+      .closing {
+        font-size: 1.8rem;
+      }
+
+      .message {
+        font-size: 0.95rem;
+      }
+
+      .promise {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated Background Elements -->
+  <div class="bg-gradient"></div>
+  <div class="bg-hearts">
+    <div class="heart-particle" style="left: 10%; animation-delay: 0s;">♥</div>
+    <div class="heart-particle" style="left: 25%; animation-delay: 2s;">♥</div>
+    <div class="heart-particle" style="left: 60%; animation-delay: 4s;">♥</div>
+    <div class="heart-particle" style="left: 80%; animation-delay: 1s;">♥</div>
+    <div class="heart-particle" style="left: 45%; animation-delay: 3s;">♥</div>
+    <div class="heart-particle" style="left: 15%; animation-delay: 5s;">♥</div>
+  </div>
+
+  <main class="card">
+    <!-- Headline -->
+    <h1 class="headline">I'm Sorry ❤️</h1>
+    <div class="divider"></div>
+
+    <!-- Heartfelt Apology Message -->
+    <div class="message-box">
+      <p class="message">
+        "I know somehow I hurt you again and again or make you feel sad, and now I don't know why but I started expecting things. When they don't happen, I get upset. I didn't realize it before, but my behavior changed a few days ago, which is why I started having these expectations."
+      </p>
+    </div>
+
+    <!-- Promise Section -->
+    <div class="promise-container">
+      <p class="section-title">✨ My Promise to You ✨</p>
+      <p class="promise">
+        I am <span class="promise-highlight">stepping back and letting go</span> of those unreasonable expectations. I want to focus purely on <span class="promise-highlight">understanding you</span>, being patient, and <span class="promise-highlight">loving you</span> without letting silly moods get in the way.
+      </p>
+    </div>
+
+    <!-- Closing -->
+    <p class="closing">Will you forgive me?</p>
+    <p class="closing-subtext">You mean everything to me 💕</p>
+
+    <!-- Interactive Buttons -->
+    <div class="button-group">
+      <button class="heart-btn" aria-label="Love" title="Click to show your love">❤️</button>
+      <button class="flower-btn" aria-label="Forgive" title="Will you forgive me?">🌸</button>
+    </div>
+  </main>
+
+  <script>
+    // Enhanced interaction
+    const heartBtn = document.querySelector('.heart-btn');
+    const flowerBtn = document.querySelector('.flower-btn');
+
+    heartBtn.addEventListener('click', function() {
+      this.style.animation = 'none';
+      setTimeout(() => {
+        this.style.animation = 'pulse 2s infinite';
+      }, 10);
+      
+      // Create floating hearts on click
+      createFloatingHeart(event);
+    });
+
+    flowerBtn.addEventListener('click', function() {
+      alert('Thank you for your love! I promise to be better. 🌸💕');
+    });
+
+    function createFloatingHeart(event) {
+      const heart = document.createElement('div');
+      heart.textContent = '❤️';
+      heart.style.position = 'fixed';
+      heart.style.left = event.clientX + 'px';
+      heart.style.top = event.clientY + 'px';
+      heart.style.fontSize = '1.5rem';
+      heart.style.zIndex = '9999';
+      heart.style.pointerEvents = 'none';
+      heart.style.animation = 'float 2s ease-out forwards';
+      
+      document.body.appendChild(heart);
+      
+      setTimeout(() => heart.remove(), 2000);
+    }
+  </script>
+
+</body>
+</html>
